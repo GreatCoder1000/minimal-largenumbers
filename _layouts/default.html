@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% seo %}
+    {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,11 +39,19 @@
         </ul>
         {% endif %}
       </header>
-      <section>
-
-      {{ content }}
-
-      </section>
+      <div class="content-sidebar">
+        <section class="content">
+          {{ content }}
+        </section>
+        <aside class="sidebar">
+          <h2>Repository Info</h2>
+          <p><strong>Name:</strong> {{ site.github.repository_name }}</p>
+          <p><strong>Owner:</strong> <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+          <p><strong>Description:</strong> {{ site.description | default: site.github.project_tagline }}</p>
+          <p><strong>Stars:</strong> {{ site.github.stargazers_count }}</p>
+          <p><strong>Forks:</strong> {{ site.github.forks_count }}</p>
+        </aside>
+      </div>
       <footer>
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
